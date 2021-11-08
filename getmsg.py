@@ -96,7 +96,10 @@ def getmsg(url=None):
     # print(url)
     response = requests.get(url=url)
     bf = BeautifulSoup(response.text, features="lxml")
-    cqd = bf.find_all('p', style=['text-align:justify;line-height: 2em;', 'text-align:left;text-autospace:none;', 'text-align:left;line-height: 2em;'])
+    cqd = bf.find_all('p', style=['text-align:justify;line-height: 2em;',
+                                  'text-align:justify;vertical-align:inherit;line-height: 2em;',
+                                  'text-align:left;text-autospace:none;', 'text-align:left;line-height: 2em;',
+                                  'text-align:left;vertical-align:inherit;line-height: 2em;'])
     title = bf.find_all('section', style=['height: 40px;display: flex;justify-content: center;', 'height:40px;display: flex;justify-content: center;'])
     cnt = -1
     lis = ['国内要闻','科技通信','金融财经','住房地产','医疗健康','国际视角']
