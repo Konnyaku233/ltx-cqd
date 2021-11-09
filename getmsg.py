@@ -80,19 +80,19 @@ def getmsg(url=None):
 
     if (url == None):
         url = geturl()
+        response = requests.get(url=url, headers=headers)
+        url = ''
+        flag = 0
+        cnt = 0
+        for i in response.text:
+            if i == '{':
+                flag = 1
+            elif i == '\'':
+                cnt = cnt +1
+            elif flag == 1 and cnt %2 == 1 :
+                url = url + i
     if url is None:
         return None
-    response = requests.get(url=url, headers=headers)
-    url = ''
-    flag = 0
-    cnt = 0
-    for i in response.text:
-        if i == '{':
-            flag = 1
-        elif i == '\'':
-            cnt = cnt +1
-        elif flag == 1 and cnt %2 == 1 :
-            url = url + i
     # print(url)
     response = requests.get(url=url)
     bf = BeautifulSoup(response.text, features="lxml")

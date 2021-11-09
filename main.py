@@ -27,7 +27,7 @@ if __name__ == '__main__':
         else:
             print("请输入目标网址：")
             msg = getmsg(input())
-        with open("早报.txt", 'w') as f:
+        with open("早报.txt", 'w', encoding='utf-8') as f:
             f.write(msg)
             f.close()
         print("已保存至早报.txt")
