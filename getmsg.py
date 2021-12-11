@@ -29,7 +29,8 @@ def week(num:int):
 
 
 headers = {
-    'Cookie': 'SUID=3DDC5D70721A910A000000006113B341; SUID=3DDC5D70741A910A000000006113B342; weixinIndexVisited=1; SUV=00F9E661705DDC3D6113B3426F4EF907; wuid=AAGlHfjrNwAAAAqHI2SLzAAAkwA=; ABTEST=0|1633886555|v1; SNUID=EF83A018C8C2092A7D9A6253C81928CF; IPLOC=CN4400',
+
+    'Cookie': 'SMYUV=1631949121801267; IPLOC=CN4403; SUID=0E013C3A721A910A0000000061792CFD; SUID=0E013C3A7050A00A0000000061792CFD; weixinIndexVisited=1; SUV=00F07C9C3A3C010E61792CFE4A7F7831; SNUID=CEC183FAC0BA70938047DB98C067D9D4; ABTEST=8|1639208358|v1',
     'Host': 'weixin.sogou.com',
     'Referer': 'https://www.sogou.com/web?query=python&_asf=www.sogou.com&_ast=&w=01019900&p=40040100&ie=utf8&from=index-nologin&s_from=index&sut=1396&sst0=1610779538290&lkt=0%2C0%2C0&sugsuv=1590216228113568&sugtime=1610779538290',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
@@ -96,10 +97,11 @@ def getmsg(url=None):
     # print(url)
     response = requests.get(url=url)
     bf = BeautifulSoup(response.text, features="lxml")
-    cqd = bf.find_all('p', style=['text-align:justify;line-height: 2em;',
-                                  'text-align:justify;vertical-align:inherit;line-height: 2em;',
-                                  'text-align:left;text-autospace:none;', 'text-align:left;line-height: 2em;',
-                                  'text-align:left;vertical-align:inherit;line-height: 2em;'])
+    # cqd = bf.find_all('p', style=['text-align:justify;line-height: 2em;',
+    #                               'text-align:justify;vertical-align:inherit;line-height: 2em;',
+    #                               'text-align:left;text-autospace:none;', 'text-align:left;line-height: 2em;',
+    #                               'text-align:left;vertical-align:inherit;line-height: 2em;'])
+    cqd = bf.find_all('p')
     title = bf.find_all('section', style=['height: 40px;display: flex;justify-content: center;', 'height:40px;display: flex;justify-content: center;'])
     cnt = -1
     lis = ['国内要闻','科技通信','金融财经','住房地产','医疗健康','国际视角']
